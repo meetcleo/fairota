@@ -11,7 +11,20 @@
 
   <p>
     <strong>Members:</strong>
-    <%= rota.members.map(&:name).join(', ') %>
+    <table>
+      <thead>
+      <th colspan="3">Name</th>
+
+      </thead>
+      <tbody>
+      <% rota.prioritised_members.each do |member| %>
+      <tr>
+        <td><%= member.name %></td>
+        <td><%= link_to 'Relieve', relieve_rota_member_path(rota, member), data: { turbo_method: :post } %></td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
   </p>
 
 </div>
