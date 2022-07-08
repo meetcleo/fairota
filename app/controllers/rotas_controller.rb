@@ -49,10 +49,10 @@ class RotasController < ApplicationController
 
   # DELETE /rotas/1 or /rotas/1.json
   def destroy
-    @rota.destroy
+    # @rota.destroy
 
     respond_to do |format|
-      format.html { redirect_to rotas_url, notice: "Rota was successfully destroyed." }
+      format.html { redirect_to rotas_url, notice: "Can't delete rotas" }
       format.json { head :no_content }
     end
   end
