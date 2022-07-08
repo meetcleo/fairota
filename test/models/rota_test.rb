@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RotationTest < ActiveSupport::TestCase
+class RotaTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

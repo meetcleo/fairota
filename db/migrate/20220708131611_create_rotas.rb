@@ -1,6 +1,6 @@
-class CreateRotations < ActiveRecord::Migration[7.0]
+class CreateRotas < ActiveRecord::Migration[7.0]
   def change
-    create_table :rotations do |t|
+    create_table :rotas do |t|
       t.string :title
       t.text :description
 

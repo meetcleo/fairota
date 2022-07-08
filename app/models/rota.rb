@@ -1,0 +1,2 @@
+class Rota < ApplicationRecord
+end
