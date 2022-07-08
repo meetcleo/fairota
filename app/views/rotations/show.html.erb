@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @rotation %>
+
+<div>
+  <%= link_to "Edit this rotation", edit_rotation_path(@rotation) %> |
+  <%= link_to "Back to rotations", rotations_path %>
+
+  <%= button_to "Destroy this rotation", @rotation, method: :delete %>
+</div>
