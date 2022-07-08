@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_08_131611) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_08_132253) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "members", force: :cascade do |t|
+    t.string "name"
+    t.bigint "rota_id", null: false
+    t.integer "priority"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rota_id", "priority"], name: "index_members_on_rota_id_and_priority"
+  end
 
   create_table "rosters", force: :cascade do |t|
     t.string "title"
@@ -42,4 +51,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_08_131611) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "members", "rota", column: "rota_id"
 end
