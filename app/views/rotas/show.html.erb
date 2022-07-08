@@ -7,4 +7,6 @@
   <%= link_to "Back to rotas", rotas_path %>
 
   <%= button_to "Destroy this rota", @rota, method: :delete %>
+
+  <%= render partial: 'new_member_form', locals: { member: @rota.members.new } %>
 </div>

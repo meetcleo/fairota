@@ -9,4 +9,9 @@
     <%= rota.description %>
   </p>
 
+  <p>
+    <strong>Members:</strong>
+    <%= rota.members.map(&:name).join(', ') %>
+  </p>
+
 </div>
