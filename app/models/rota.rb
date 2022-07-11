@@ -8,4 +8,8 @@ class Rota < ApplicationRecord
   def lowest_priority
     members.maximum(:priority) || 0
   end
+
+  def highest_priority
+    members.minimum(:priority) || 1
+  end
 end

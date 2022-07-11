@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   resources :rotas do
     resources :members, only: [:create, :destroy] do
       member do
-        post :relieve
+        post :move_top
+        post :move_bottom
         post :move_up
         post :move_down
       end

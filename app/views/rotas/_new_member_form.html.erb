@@ -1,22 +1,6 @@
 <%= form_with(model: member, url: [member.rota, member]) do |form| %>
-  <% if member.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(rota.errors.count, "error") %> prohibited this rota from being saved:</h2>
-
-      <ul>
-        <% member.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="input-group">
+    <%= form.submit class: 'btn btn-success' %>
+    <%= form.text_field :name, class: 'form-control', placeholder: 'Name' %>
   </div>
 <% end %>

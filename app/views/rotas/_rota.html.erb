@@ -1,35 +1,60 @@
-<div id="<%= dom_id rota %>">
-  <p>
-    <strong>Title:</strong>
-    <%= rota.title %>
-  </p>
+<div id="<%= dom_id rota %>" class="card">
+  <div class="card-body">
+    <h1><%= rota.title %></h1>
+    <p class="card-text"><%= rota.description %></p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= rota.description %>
-  </p>
+    <div class="row">
+      <div class="col-4">
+        <%= link_to "Back to rotas", rotas_path %>
+        <br>
+        <%= link_to "Edit this rota", edit_rota_path(@rota) %>
 
-  <p>
-    <strong>Members:</strong>
-    <table>
-      <thead>
-      <tr>
-        <th>Name</th>
-        <th colspan="4">Actions</th>
-      </tr>
-      </thead>
-      <tbody>
-      <% rota.prioritised_members.each do |member| %>
-      <tr>
-        <td><%= member.name %></td>
-        <td><%= link_to 'Relieve', relieve_rota_member_path(rota, member), data: { turbo_method: :post } %></td>
-        <td><%= link_to 'Move up', move_up_rota_member_path(rota, member), data: { turbo_method: :post } %></td>
-        <td><%= link_to 'Move down', move_down_rota_member_path(rota, member), data: { turbo_method: :post } %></td>
-        <td><%= link_to 'Retire', rota_member_path(rota, member), data: { turbo_method: :delete } %></td>
-      </tr>
-      <% end %>
-      </tbody>
-    </table>
-  </p>
+        <%= render partial: 'new_member_form', locals: { member: @rota.members.new } %>
 
+      </div>
+
+      <div class="col">
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Actions</th>
+            <th>Name</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% rota.prioritised_members.each_with_index do |member, index| %>
+            <tr>
+              <th scope="row" style="width: 8px"><%= index + 1 %></th>
+              <td style="width: 64px">
+                <div class="btn-group" role="group">
+                  <%= link_to move_top_rota_member_path(rota, member), class: 'btn btn-primary', data: { turbo_method: :post } do %>
+                    <i class="fa-solid fa-angles-up"></i>
+                  <% end %>
+                  <%= link_to move_up_rota_member_path(rota, member), class: 'btn btn-primary', data: { turbo_method: :post } do %>
+                    <i class="fa-solid fa-angle-up"></i>
+                  <% end %>
+                  <%= link_to move_down_rota_member_path(rota, member), class: 'btn btn-primary', data: { turbo_method: :post } do %>
+                    <i class="fa-solid fa-angle-down"></i>
+                  <% end %>
+                  <%= link_to move_bottom_rota_member_path(rota, member), class: 'btn btn-success', data: { turbo_method: :post } do %>
+                    <i class="fa-solid fa-angles-down"></i>
+                  <% end %>
+                  <%= link_to rota_member_path(rota, member), class: 'btn btn-danger', data: { turbo_method: :delete, turbo_confirm: "Retire #{member.name}, are you sure?" } do %>
+                    <i class="fa-solid fa-skull-crossbones"></i>
+                  <% end %>
+                </div>
+              </td>
+              <td><%= member.name %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+  </div>
 </div>

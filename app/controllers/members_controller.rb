@@ -8,7 +8,14 @@ class MembersController < ApplicationController
     redirect_to @rota
   end
 
-  def relieve
+  def move_top
+    member = @rota.members.find(params[:id])
+    member.update!(priority: @rota.highest_priority - 1)
+
+    redirect_to @rota
+  end
+
+  def move_bottom
     member = @rota.members.find(params[:id])
     member.update!(priority: @rota.lowest_priority + 1)
 
