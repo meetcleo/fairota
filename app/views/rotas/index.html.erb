@@ -11,21 +11,3 @@
     <%= link_to "+ New rota", new_rota_path, class: 'btn btn-success' %>
   </div>
 </div>
-<div class="row row-cols-3 g-4">
-  <% @rotas.each do |rota| %>
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><%= rota.title %></h5>
-          <p class="card-text"><%= rota.description %></p>
-          <p class="card-text text-muted">
-            <span class="fw-bold">Members:</span>
-            <br>
-            <%= rota.prioritised_members.map(&:name).join(', ') %>
-          </p>
-          <%= link_to "Open rota", rota, class: 'card-link' %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>

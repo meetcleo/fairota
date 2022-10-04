@@ -3,7 +3,6 @@ class RotasController < ApplicationController
 
   # GET /rotas or /rotas.json
   def index
-    @rotas = Rota.all
   end
 
   # GET /rotas/1 or /rotas/1.json
