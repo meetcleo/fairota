@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby file: ".ruby-version"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.3"
+gem "rails", "~> 7.0.8.7"
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
@@ -50,9 +50,16 @@ gem "bootsnap", require: false
 
 gem "newrelic_rpm"
 
+# standard gems no longer present in ruby 3.4
+gem "bigdecimal"
+gem "mutex_m"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+
+  # standard gems no longer present in ruby 3.4
+  gem "drb"
 end
 
 group :development do
