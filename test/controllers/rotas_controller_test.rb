@@ -38,8 +38,8 @@ class RotasControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to rota_url(@rota)
   end
 
-  test "should destroy rota" do
-    assert_difference("Rota.count", -1) do
+  test "should not destroy rota" do
+    assert_no_difference("Rota.count") do
       delete rota_url(@rota)
     end
 
