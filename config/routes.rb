@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get "login", to: "sessions#new"
+  get "auth/okta/callback", to: "sessions#create"
+  get "auth/failure", to: "sessions#failure"
+
   get 'members/create'
   resources :rotas do
     resources :members, only: [:create, :destroy] do

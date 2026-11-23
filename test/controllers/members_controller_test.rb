@@ -2,6 +2,7 @@ require "test_helper"
 
 class MembersControllerTest < ActionDispatch::IntegrationTest
   setup do
+    sign_in
     @rota = rotas(:one)
   end
 

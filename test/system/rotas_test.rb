@@ -2,6 +2,7 @@ require "application_system_test_case"
 
 class RotasTest < ApplicationSystemTestCase
   setup do
+    sign_in
     @rota = rotas(:one)
   end
 
